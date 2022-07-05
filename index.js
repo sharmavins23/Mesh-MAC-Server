@@ -37,7 +37,10 @@ global.navbar = `<html>
     </head>
     <div>
         <a href="http://localhost:${global.port}/">
-            <button>Home></button>
+            <button>Home</button>
+        </a>
+        <a href="http://localhost:${global.port}/reset">
+            <button>Reset Counts</button>
         </a>
     </div>
     <br />`;
