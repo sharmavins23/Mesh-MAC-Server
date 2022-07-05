@@ -5,7 +5,7 @@
 // ===== Imports ===============================================================
 
 // File indexing, built-in to Node
-import fs from "fs";
+const fs = require("fs");
 
 // ===== Route functionality ===================================================
 

@@ -10,11 +10,12 @@ function home(app) {
         let html = global.navbar;
 
         // Create the table headers
-        html += `<table>
-            <tr>
-                <th>MAC ID</th>
-                <th>Count</th>
-            </tr>`;
+        html += `<div>
+            <table>
+                <tr>
+                    <th>MAC ID</th>
+                    <th>Count</th>
+                </tr>`;
 
         // Iterate through all devices and add them to the HTML page
         for (const [key, value] of Object.entries(global.deviceList)) {
@@ -25,7 +26,8 @@ function home(app) {
         }
 
         // Close the table
-        html += `</table>`;
+        html += `</table>
+        </div>`;
 
         // Send the HTML page to the client
         response
