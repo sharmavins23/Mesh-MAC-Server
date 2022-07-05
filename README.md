@@ -1,3 +1,14 @@
+# Mesh MAC Readout
+
+This server takes JSON inputs containing various MAC IDs and prints them out to
+a site along with message counts.
+
+For testing the functionality of an ESP mesh network, the server is valuable for
+demonstrating the number of nodes in the network as well as JSON communication
+between both the nodes and a separate server. The project will keep track of a
+list of device MAC IDs as well as the number of communications given to the
+server from the individual mesh nodes.
+
 # License TL;DR
 
 This project is distributed under the MIT license. This is a paraphrasing of a
