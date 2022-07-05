@@ -9,6 +9,26 @@ between both the nodes and a separate server. The project will keep track of a
 list of device MAC IDs as well as the number of communications given to the
 server from the individual mesh nodes.
 
+## Testing with Hoppscotch
+
+When the server is enabled on my machine, I can test via a POST request
+structured as follows:
+
+```js
+const options = {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: '{"deviceIDs":["testProtocol","testProtocol2"]}',
+};
+
+fetch("http://vinsdev.ml:8080/update", options)
+    .then((response) => response.json())
+    .then((response) => console.log(response))
+    .catch((err) => console.error(err));
+```
+
+This requires the port to be forwarded.
+
 # License TL;DR
 
 This project is distributed under the MIT license. This is a paraphrasing of a

@@ -51,6 +51,8 @@ global.navbar = `<html>
 const app = express();
 // Tell Express to use Morgan for logging requests to the console
 app.use(morgan("dev"));
+// Tell Express that we're getting in JSON formats
+app.use(express.json());
 
 // Dynamically load all routes in the ./routes folder into the server
 require("./routes/DLR.js")(app);

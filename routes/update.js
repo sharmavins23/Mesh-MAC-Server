@@ -15,6 +15,8 @@ let = {
 
 function update(app) {
     app.post("/update", (request, response) => {
+        // Log the JSON body
+        console.log(request.body);
         // Get the JSON device list
         let deviceList = request.body["deviceIDs"];
 
@@ -24,7 +26,7 @@ function update(app) {
             let deviceID = deviceList[i];
 
             // Check if the device is already in the list
-            if (deviceList.indexOf(deviceID) != -1) {
+            if (deviceID in global.deviceList) {
                 // If so, increment the count
                 global.deviceList[deviceID]++;
             } else {
