@@ -15,8 +15,6 @@ let = {
 
 function update(app) {
     app.post("/update", (request, response) => {
-        // Log the JSON body
-        console.log(request.body);
         // Get the JSON device list
         let deviceList = request.body["deviceIDs"];
 
