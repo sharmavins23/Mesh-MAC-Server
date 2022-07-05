@@ -23,8 +23,14 @@ function update(app) {
             // Get the device ID
             let deviceID = deviceList[i];
 
-            // Increment the count of the device
-            global.deviceList[deviceID]++;
+            // Check if the device is already in the list
+            if (deviceList.indexOf(deviceID) != -1) {
+                // If so, increment the count
+                global.deviceList[deviceID]++;
+            } else {
+                // If not, add the device to the list
+                global.deviceList[deviceID] = 1;
+            }
         }
 
         // Send a response message
