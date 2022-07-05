@@ -1,0 +1,15 @@
+{
+  "name": "mesh-mac-server",
+  "version": "1.0.0",
+  "description": "This server takes JSON inputs containing various MAC IDs and prints them out to\r a site along with message counts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "morgan": "^1.10.0"
+  }
+}
