@@ -34,4 +34,4 @@ function retrieve(app) {
     });
 }
 
-module.exports = update;
+module.exports = retrieve;
