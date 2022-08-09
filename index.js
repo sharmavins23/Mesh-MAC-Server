@@ -16,8 +16,30 @@ global.port = 8080; // See: Wikipedia's list of TCP and UDP port numbers
 
 // Device MAC IDs as well as the count of their responses
 global.deviceList = {
-    "testProtocol": 0
+    "testProtocol": {
+        "count": 0,
+        "temperature": 0,
+        "freeHeapMem": 0,
+        "maxContigFreeHeapMem": 0,
+        "lastResetReason": "",
+        "tsfTimeStampDiff": 0,
+    }
 };
+
+// ESP reset reason code enumeration
+global.resetReasons = [
+    "Reset reason can not be determined",
+    "Reset due to power-on event",
+    "Reset by external pin (not applicable for ESP32)",
+    "Software reset via esp_restart",
+    "Software reset due to exception/panic",
+    "Reset (software or hardware) due to interrupt watchdog",
+    "Reset due to task watchdog",
+    "Reset due to other watchdogs",
+    "Reset after exiting deep sleep mode",
+    "Brownout reset (software or hardware)",
+    "Reset over SDIO",
+]
 
 // Navbar to display on the webpages (for easy navigation and testing)
 global.navbar = `<html>
