@@ -16,6 +16,16 @@ let = {
 
 function update(app) {
     app.post("/update", (request, response) => {
+        // console.log(request.body);
+
+        // Unpack the JSON object
+        // ! The temperature JSON object is not properly functional
+        let deviceID = request.body["deviceID"];
+        let temperature = request.body["temperature"];
+        let freeHeapSize = request.body["freeHeapSize"];
+        let maxFreeHeapSize = request.body["maxFreeHeapSize"];
+        let resetReason = request.body["resetReason"];
+
         // Check if the device is already in the list
         if (deviceID in global.deviceList) {
             // Increment the count of the device
@@ -27,18 +37,11 @@ function update(app) {
             }
         }
 
-        // Unpack the JSON object
-        // ! The temperature JSON object is not properly functional
-        let temperature = request.body["temperature"];
-        let freeHeapMem = request.body["freeHeapMem"];
-        let maxContigFreeHeapMem = request.body["maxContigFreeHeapMem"];
-        let lastResetReason = request.body["lastResetReason"];
-
         // Update the basic information of the table from the device
         global.deviceList[deviceID]["temperature"] = temperature;
-        global.deviceList[deviceID]["freeHeapMem"] = freeHeapMem;
-        global.deviceList[deviceID]["maxContigFreeHeapMem"] = maxContigFreeHeapMem;
-        global.deviceList[deviceID]["lastResetReason"] = lastResetReason;
+        global.deviceList[deviceID]["freeHeapMem"] = freeHeapSize;
+        global.deviceList[deviceID]["maxContigFreeHeapMem"] = maxFreeHeapSize;
+        global.deviceList[deviceID]["lastResetReason"] = resetReason;
 
         // Compute the timestamp difference between the device and server
         let reportedTSF = request.body["tsfTimeStamp"];
@@ -52,6 +55,8 @@ function update(app) {
         response
             .status(200) // HTTP status code 200: OK
             .send("OK"); // Response message
+
+        // console.log(global.deviceList);
     });
 }
 

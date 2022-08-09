@@ -7,7 +7,7 @@ function reset(app) {
     app.get("/reset", (request, response) => {
         // Iterate through and set all device response counts to zero
         for (const [key, value] of Object.entries(global.deviceList)) {
-            global.deviceList[key] = 0;
+            global.deviceList[key]["count"] = 0;
         }
 
         response
