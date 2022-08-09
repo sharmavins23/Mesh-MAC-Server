@@ -5,20 +5,17 @@
 
 let = {
     "deviceID": "device_ID MAC",
-    "temperature": "temp_int",
-    "freeHeapMem": "free_heap_mem",
-    "maxContigFreeHeapMem": "max_contig_free_heap_mem",
+    "temperature": 0,
+    "freeHeapMem": 0,
+    "maxContigFreeHeapMem": 0,
     "lastResetReason": "last_reset_reason",
-    "tsfTimeStamp": "tsf_time_stamp",
+    "tsfTimeStamp": 0,
 };
 
 // ===== Route functionality ===================================================
 
 function update(app) {
     app.post("/update", (request, response) => {
-        // Get the JSON device list
-        let deviceList = request.body["deviceIDs"];
-
         // Check if the device is already in the list
         if (deviceID in global.deviceList) {
             // Increment the count of the device
@@ -30,10 +27,18 @@ function update(app) {
             }
         }
 
+        // Unpack the JSON object
+        // ! The temperature JSON object is not properly functional
+        let temperature = 0; // request.body["temperature"];
+        let freeHeapMem = request.body["freeHeapMem"];
+        let maxContigFreeHeapMem = request.body["maxContigFreeHeapMem"];
+        let lastResetReason = request.body["lastResetReason"];
+
         // Update the basic information of the table from the device
         global.deviceList[deviceID]["temperature"] = temperature;
         global.deviceList[deviceID]["freeHeapMem"] = freeHeapMem;
         global.deviceList[deviceID]["maxContigFreeHeapMem"] = maxContigFreeHeapMem;
+        global.deviceList[deviceID]["lastResetReason"] = lastResetReason;
 
         // Compute the timestamp difference between the device and server
         let reportedTSF = request.body["tsfTimeStamp"];
@@ -42,10 +47,6 @@ function update(app) {
         global.deviceList[deviceID]["tsfTimeStampDiff"] = timeDiff;
 
         // TODO: Calculate an average of all time differences
-
-        // Update the last reset reason of the device
-        let resetReasonStr = global.resetReasons[lastResetReason];
-        global.deviceList[deviceID]["lastResetReason"] = resetReasonStr;
 
         // Send a response message
         response

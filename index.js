@@ -26,21 +26,6 @@ global.deviceList = {
     }
 };
 
-// ESP reset reason code enumeration
-global.resetReasons = [
-    "Reset reason can not be determined",
-    "Reset due to power-on event",
-    "Reset by external pin (not applicable for ESP32)",
-    "Software reset via esp_restart",
-    "Software reset due to exception/panic",
-    "Reset (software or hardware) due to interrupt watchdog",
-    "Reset due to task watchdog",
-    "Reset due to other watchdogs",
-    "Reset after exiting deep sleep mode",
-    "Brownout reset (software or hardware)",
-    "Reset over SDIO",
-]
-
 // Navbar to display on the webpages (for easy navigation and testing)
 global.navbar = `<html>
     <head>
