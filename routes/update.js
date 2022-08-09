@@ -29,7 +29,7 @@ function update(app) {
 
         // Unpack the JSON object
         // ! The temperature JSON object is not properly functional
-        let temperature = 0; // request.body["temperature"];
+        let temperature = request.body["temperature"];
         let freeHeapMem = request.body["freeHeapMem"];
         let maxContigFreeHeapMem = request.body["maxContigFreeHeapMem"];
         let lastResetReason = request.body["lastResetReason"];
