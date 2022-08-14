@@ -6,9 +6,9 @@
 let = {
     "deviceID": "device_ID MAC",
     "temperature": 0,
-    "freeHeapMem": 0,
-    "maxContigFreeHeapMem": 0,
-    "lastResetReason": "last_reset_reason",
+    "freeHeapSize": 0,
+    "maxFreeHeapSize": 0,
+    "resetReason": "last_reset_reason",
     "tsfTimeStamp": 0,
 };
 
@@ -54,6 +54,7 @@ function update(app) {
         // Send a response message
         response
             .status(200) // HTTP status code 200: OK
+            .set("x-MD5", "test") // Extra MD5 header for later configuration
             .send("OK"); // Response message
 
         // console.log(global.deviceList);
